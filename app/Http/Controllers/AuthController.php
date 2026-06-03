@@ -18,12 +18,7 @@ class AuthController extends Controller
             'password' => 'required|min:8|max:30',
         ]);
 
-        User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => bcrypt($request->password),
-            'role'     => 'customer'
-        ]);
+        $Users = User::all();
 
         return redirect(route('auth.login'));
     }
