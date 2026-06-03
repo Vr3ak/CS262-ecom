@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customer.homepage');
+});
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
 });
 
 Route::get('/user', [UserController::class, 'index'])->name('users.index');
@@ -13,3 +18,9 @@ Route::post('/user', [UserController::class, 'store'])->name('users.store');
 Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::put('/user/{user}/update', [UserController::class, 'update'])->name('users.update');
 Route::delete('/user/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/register', [AuthController::class, 'registerForm'])->name('auth.register');
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register.store');
+Route::get('/login', [AuthController::class, 'loginForm'])->name('auth.login');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login.store');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
