@@ -5,13 +5,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create User</h1>
-
-   
-
-    <form method="post" action="{{route('users.store')}}">
+    <h1>Login</h1>
+    <form action="{{route('auth.login.store')}}" method="post">
         @csrf
-        
         <div>
             @if($errors->any())
                 <ul>
@@ -23,10 +19,6 @@
         </div>
 
         <div>
-            <label>Full Name</label>
-            <input type="text" name="name"/>
-        </div>
-        <div>
             <label>Email</label>
             <input type="text" name="email"/>
         </div>
@@ -35,9 +27,8 @@
             <input type="password" name="password"/>
         </div>
         <div>
-            <input type="submit" value="Save User">
+            <input type="submit" value="Login">
         </div>
     </form>
-
 </body>
 </html>
