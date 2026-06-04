@@ -13,12 +13,12 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/user', [UserController::class, 'index'])->name('users.index');
-Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/user', [UserController::class, 'store'])->name('users.store');
-Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/user/{user}/update', [UserController::class, 'update'])->name('users.update');
-Route::delete('/user/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('admin/user', [UserController::class, 'index'])->name('users.index');
+Route::get('admin/user/create', [UserController::class, 'create'])->name('users.create');
+Route::post('admin/user', [UserController::class, 'store'])->name('users.store');
+Route::get('admin/user/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('admin/user/{user}/update', [UserController::class, 'update'])->name('users.update');
+Route::delete('admin/user/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
 
 Route::get('/register', [AuthController::class, 'registerForm'])->name('auth.register');
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register.store');
