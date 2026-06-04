@@ -5,10 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Homepage</h1>
-    <form method="POST" action="{{route('auth.logout')}}">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
+    @extends('layout')
+    @section('content')
+        <div class="container">
+            <h1>Home something something</h1>
+        </div>
+    @endsection
 </body>
 </html>
