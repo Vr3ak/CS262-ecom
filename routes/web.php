@@ -26,8 +26,4 @@ Route::get('/login', [AuthController::class, 'loginForm'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::get('/categories/electronics', [CategoriesController::class, 'electronics'])->name('categories.electronics');
-Route::get('/categories/agricultural', [CategoriesController::class, 'agricultural'])->name('categories.agricultural');
-Route::get('/categories/drinks', [CategoriesController::class, 'drinks'])->name('categories.drinks');
-Route::get('/categories/accessories', [CategoriesController::class, 'accessories'])->name('categories.accessories');
-Route::get('/categories/clothing', [CategoriesController::class, 'clothing'])->name('categories.clothing');
+Route::get('/categories/{category}', [CategoriesController::class, 'show'])->name('categories.show');
