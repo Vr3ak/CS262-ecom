@@ -1,34 +1,33 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form action="{{route('auth.login.store')}}" method="post">
-        @csrf
-        <div>
+@extends('layout')
+
+@section('content')
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="mb-4">Login</h2>
+
             @if($errors->any())
-                <ul>
-                    @foreach($errors->all() as $errors)
-                        <li>{{$errors}}</li>
+                <ul class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             @endif
-        </div>
 
-        <div>
-            <label>Email</label>
-            <input type="text" name="email"/>
+            <form action="{{ route('auth.login.store') }}" method="post">
+                @csrf
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" name="email" class="form-control" value="{{ old('email') }}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Login</button>
+                <p class="text-center mt-3">Don't have an account? <a href="{{ route('auth.register') }}">Sign Up</a></p>
+            </form>
         </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password"/>
-        </div>
-        <div>
-            <input type="submit" value="Login">
-        </div>
-    </form>
-</body>
-</html>
+    </div>
+</div>
+@endsection

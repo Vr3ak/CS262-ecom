@@ -3,27 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Models\Product;
 
 class CategoriesController extends Controller
 {
-    public function electronics() {
-        return view('categories.electronics');
-    }
-
-    public function agricultural() {
-        return view('categories.agricultural');
-    }
-
-    public function drinks() {
-        return view('categories.drinks');
-    }
-
-    public function accessories() {
-        return view('categories.accessories');
-    }
-
-    public function clothing() {
-        return view('categories.clothing');
+    public function show(Category $category)
+    {
+        $products = Product::where('category_id', $category->id)->get();
+        return view('categories.show', compact('category', 'products'));
     }
 }

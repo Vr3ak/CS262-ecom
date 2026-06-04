@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container py-5">
-    <h1>Home something something</h1>
+    <h1>{{ $category->name }}</h1>
 </div>
 @endsection

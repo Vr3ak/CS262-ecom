@@ -13,12 +13,17 @@ class AuthController extends Controller
 
     public function register(Request $request) {
         $data = $request->validate([
-            'name' => 'required|min:3|max:30',
-            'email' => 'required|email|unique:users',
+            'name'     => 'required|min:3|max:30',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|min:8|max:30',
         ]);
 
-        $Users = User::all();
+        User::create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => bcrypt($data['password']),
+            'role'     => 'customer',
+        ]);
 
         return redirect(route('auth.login'));
     }

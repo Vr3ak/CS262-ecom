@@ -28,13 +28,13 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+
                     <div class="navbar-nav">
-                        <a class="nav-link px-5 text-white" href="/">Electronics</a>
-                        <a class="nav-link pe-5 text-white" href="/">Agriculture</a>
-                        <a class="nav-link pe-5 text-white" href="/">Drinks</a>
-                        <a class="nav-link pe-5 text-white" href="/">Accessories</a>
-                        <a class="nav-link pe-5 text-white" href="/">Clothing</a>
+                        @foreach(App\Models\Category::all() as $navCategory)
+                            <a class="nav-link pe-5 text-white" href="{{ route('categories.show', $navCategory) }}">{{ $navCategory->name }}</a>
+                        @endforeach
                     </div>
+
                     <div class="ps-5">
                         <a href="/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-basket2-fill" viewBox="0 0 16 16">
@@ -43,7 +43,7 @@
                         </a>
                     </div>
                     <div class="ps-5">
-                        <a href="/">
+                        <a href="{{ route('auth.login') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
@@ -67,11 +67,9 @@
                     <div class="col-md-4 ps-5">
                         <h5><u>Quick Links</u></h5>
                         <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-white">Electronics</a></li>
-                        <li><a href="#" class="text-decoration-none text-white">Agriculture</a></li>
-                        <li><a href="#" class="text-decoration-none text-white">Drinks</a></li>
-                        <li><a href="#" class="text-decoration-none text-white">Accessories</a></li>
-                        <li><a href="#" class="text-decoration-none text-white">Clothing</a></li>
+                        @foreach(App\Models\Category::all() as $category)
+                            <a class="nav-link pe-5 text-white" href="/categories/{{ $category->name }}">{{ $category->name }}</a>
+                        @endforeach
                         </ul>
                     </div>
                     <div class="col-md-4 ps-5">
