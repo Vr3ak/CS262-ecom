@@ -6,5 +6,7 @@
 </head>
 <body>
     <h1>Dashboard</h1>
+    <p>Welcome, {{ auth()->user()->name }}</p>
+    <a href="{{ route('users.index') }}">Manage Users</a>
 </body>
 </html>
