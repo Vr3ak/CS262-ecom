@@ -24,6 +24,10 @@
             <input type="text" name="name" value="{{ old('name') }}">
         </div>
         <div>
+            <label>Image</label>
+            <input type="text" name="image" placeholder="https://example.com/image.jpg" value="{{ old('image') }}">
+        </div>
+        <div>
             <label>Description</label>
             <textarea name="description">{{ old('description') }}</textarea>
         </div>

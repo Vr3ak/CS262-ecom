@@ -1,5 +1,17 @@
 <div class="col">
     <div class="card h-100 shadow-sm border-0">
+        @if($product->image)
+            <img src="{{ $product->image }}" class="card-img-top" alt="{{ $product->name }}"
+                 style="height:200px;object-fit:cover;">
+        @else
+            <div class="d-flex align-items-center justify-content-center bg-light text-muted"
+                 style="height:200px;">
+                <div class="text-center">
+                    <i class="bi bi-image fs-1 d-block mb-1"></i>
+                    <small>No Image</small>
+                </div>
+            </div>
+        @endif
         <div class="card-body d-flex flex-column">
             <h6 class="card-title fw-semibold">{{ $product->name }}</h6>
             <p class="card-text text-muted small flex-grow-1">
