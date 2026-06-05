@@ -22,7 +22,7 @@
         <div>
             <label>Name</label>
             <input type="text" name="name" value="{{ old('name') }}">
-        </div>    
+        </div>
         <div>
             <label>Description</label>
             <textarea name="description">{{ old('description') }}</textarea>

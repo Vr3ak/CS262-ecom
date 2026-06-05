@@ -11,8 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-});
+    return view('admin.dashboard');})->name('admin.dashboard');
 
 Route::get('admin/user', [UserController::class, 'index'])->name('users.index');
 Route::get('admin/user/create', [UserController::class, 'create'])->name('users.create');

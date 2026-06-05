@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>Products</h1>
-    <a href="{{ route('products.create') }}">Add Product</a>
 
     <div>
         @if(session()->has('success'))
@@ -44,5 +43,7 @@
             </tr>
         @endforeach
     </table>
+    <a href="{{ route('admin.dashboard') }}">Back</a>
+    <a href="{{ route('products.create') }}">Add Product</a>
 </body>
 </html>

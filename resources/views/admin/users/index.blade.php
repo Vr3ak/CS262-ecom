@@ -42,6 +42,7 @@
                 </tr>
             @endforeach
         </table>
+        <a href="{{ route('admin.dashboard') }}">Back</a>
     </div>
 </body>
 </html>
