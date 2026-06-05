@@ -20,6 +20,7 @@
                             <thead>
                                 <tr class="text-success">
                                     <th>ID</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Price</th>
@@ -28,22 +29,32 @@
                                     <th>Delete</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-black">        
+                            <tbody class="text-black">
                                 @foreach($products as $product)
                                     <tr>
                                         <td>{{ $product->id }}</td>
+                                        <td>
+                                            @if($product->image)
+                                                <img src="{{ $product->image }}" alt="{{ $product->name }}"
+                                                     width="50" height="50" style="object-fit:cover;border-radius:6px;">
+                                            @else
+                                                <div style="width:50px;height:50px;background:#e9ecef;border-radius:6px;display:flex;align-items:center;justify-content:center;margin:auto;">
+                                                    <i class="bi bi-image text-muted"></i>
+                                                </div>
+                                            @endif
+                                        </td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->category?->name ?? '—' }}</td>
                                         <td>${{ number_format($product->price, 2) }}</td>
                                         <td>{{ $product->stock_quantity }}</td>
                                         <td>
-                                            <a href="{{ route('products.edit', $product) }}" class="btn p-1 text-success fw-bold bg-lighttext-decoration-none border-success rounded border-2">Edit</a>
+                                            <a href="{{ route('products.edit', $product) }}" class="btn p-1 text-success fw-bold bg-light text-decoration-none border-success rounded border-2">Edit</a>
                                         </td>
                                         <td>
                                             <form action="{{ route('products.destroy', $product) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <input type="submit" value="Delete" class="btn p-1 text-danger fw-bold bg-light border-danger rounded border-2 ">
+                                                <input type="submit" value="Delete" class="btn p-1 text-danger fw-bold bg-light border-danger rounded border-2">
                                             </form>
                                         </td>
                                     </tr>
@@ -61,55 +72,8 @@
                             <a href="{{ route('products.create') }}" class="btn border-success border-2 text-success fw-bold bg-light">Add Product</a>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
-    </div>
 @endsection
-
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        @foreach($products as $product)
-            <tr>
-                <td>{{ $product->id }}</td>
-                <td>
-                    @if($product->image)
-                        <img src="{{ $product->image }}" alt="{{ $product->name }}" width="60" height="60" style="object-fit:cover;">
-                    @else
-                        <div style="width:60px;height:60px;background:#e9ecef;display:flex;align-items:center;justify-content:center;font-size:10px;color:#6c757d;text-align:center;">
-                            No Image
-                        </div>
-                    @endif
-                </td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->category?->name ?? '—' }}</td>
-                <td>${{ number_format($product->price, 2) }}</td>
-                <td>{{ $product->stock_quantity }}</td>
-                <td>
-                    <a href="{{ route('products.edit', $product) }}">Edit</a>
-                </td>
-                <td>
-                    <form action="{{ route('products.destroy', $product) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Delete">
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
-    <a href="{{ route('admin.dashboard') }}">Back</a>
-    <a href="{{ route('products.create') }}">Add Product</a>
-</body>
-</html>
