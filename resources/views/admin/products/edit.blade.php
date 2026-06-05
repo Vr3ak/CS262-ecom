@@ -6,16 +6,14 @@
                 <div class="card-header text-center py-3 text-success border border-light">
                     <i class="bi bi-box-seam-fill fs-3 d-block mb-2"></i>
                     <h4 class="mb-2">Edit Product</h4>
-                </div>
-                @if($errors->any())
-                    <div class="px-4 pt-3">
-                        <ul class="text-danger">
+                    @if($errors->any())
+                        <div class="text-danger">
                             @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <p>{{ $error }}</p>
                             @endforeach
-                        </ul>
-                    </div>
+                        </div>
                 @endif
+                </div>
                 <div class="card-body p-4 text-center">
                     <div class="text-success fw-bold border border-2 rounded overflow-hidden p-2">
                         <form method="post" action="{{ route('products.update', $product) }}">
