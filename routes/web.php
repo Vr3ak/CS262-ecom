@@ -7,7 +7,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('customer.homepage');
+    $categories = \App\Models\Category::with('products')->get();
+    return view('customer.homepage', compact('categories'));
 });
 
 Route::get('/admin/dashboard', function () {
