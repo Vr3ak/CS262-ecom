@@ -1,21 +1,21 @@
 @extends('admin.layout-admin')
 @section('content')
-<div class="row justify-content-start">
+    <div class="row justify-content-start">
         <div class="col-12 mt-5">
             <div class="card shadow-sm border-2">
                 <div class="card-header text-center py-3 text-success border border-light">
                     <i class="bi bi-box-seam-fill fs-3 d-block mb-2"></i>
                     <h4 class="mb-2">Edit Product</h4>
                 </div>
-                <div>
-                    @if($errors->any())
-                    <ul>
-                        @foreach($errors->all() as $errors)
-                            <li>{{$errors}}</li>
-                        @endforeach
-                    </ul>
-                    @endif
-                </div>
+                @if($errors->any())
+                    <div class="px-4 pt-3">
+                        <ul class="text-danger">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body p-4 text-center">
                     <div class="text-success fw-bold border border-2 rounded overflow-hidden p-2">
                         <form method="post" action="{{ route('products.update', $product) }}">
@@ -24,6 +24,10 @@
                             <div class="row justify-content-center m-1">
                                 <label class="col-2">Product Name</label>
                                 <input type="text" name="name" class="col-3" value="{{ old('name', $product->name) }}">
+                            </div>
+                            <div class="row justify-content-center m-1">
+                                <label class="col-2">Image URL</label>
+                                <input type="text" name="image" class="col-3" value="{{ old('image', $product->image) }}">
                             </div>
                             <div class="row justify-content-center m-1">
                                 <label class="col-2">Description</label>
@@ -48,47 +52,16 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div>
+                            <div class="d-flex justify-content-between align-items-center mt-4 mb-2 px-3">
+                                <a href="{{ route('products.index') }}" class="btn border-success border-2 text-success fw-bold bg-light">
+                                    <i class="bi bi-arrow-left"></i> Back
+                                </a>
                                 <input type="submit" value="Update" class="btn border-success border-2 text-success fw-bold bg-light">
                             </div>
-                            </div>
                         </form>
-
-    <div>
-        @if($errors->any())
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
-    </div>
-
-    <form method="post" action="{{ route('products.update', $product) }}">
-        @csrf
-        @method('put')
-
-        <div>
-            <label>Name</label>
-            <input type="text" name="name" value="{{ old('name', $product->name) }}">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Image</label>
-            <input type="text" name="image" placeholder="https://example.com/image.jpg" value="{{ old('image', $product->image) }}">
-        </div>
-        <div>
-            <label>Description</label>
-            <textarea name="description">{{ old('description', $product->description) }}</textarea>
-        </div>
-        <div>
-            <label>Price</label>
-            <input type="number" name="price" step="0.01" min="0" value="{{ old('price', $product->price) }}">
-        </div>
-        <div>
-            <label>Stock Quantity</label>
-            <input type="number" name="stock_quantity" min="0" value="{{ old('stock_quantity', $product->stock_quantity) }}">
-        </div>
-    </div>
     </div>
 @endsection
-    
