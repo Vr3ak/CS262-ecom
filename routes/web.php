@@ -13,6 +13,10 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
 
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::get('/user', [UserController::class, 'index'])->name('users.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
