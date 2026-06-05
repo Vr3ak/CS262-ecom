@@ -48,9 +48,36 @@
                 </select>
             </div>
     <div>
-                <input type="submit" value="Save Product" class="btn border-success border-2 text-success fw-bold bg-light">
-            </div>
-        </form>
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+
+    <form method="post" action="{{ route('products.store') }}">
+        @csrf
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" value="{{ old('name') }}">
+        </div>
+        <div>
+            <label>Image</label>
+            <input type="text" name="image" placeholder="https://example.com/image.jpg" value="{{ old('image') }}">
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea name="description">{{ old('description') }}</textarea>
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="number" name="price" step="0.01" min="0" value="{{ old('price') }}">
+        </div>
+        <div>
+            <label>Stock Quantity</label>
+            <input type="number" name="stock_quantity" min="0" value="{{ old('stock_quantity', 0) }}">
         </div>
 
         <div class="d-flex align-items-center mt-4 mb-4">

@@ -54,12 +54,39 @@
                             </div>
                         </form>
 
-                        <div class="d-flex align-items-center mt-4 mb-4">
-                        <a href="{{  route('products.index')  }}" class="btn border-success border-2 text-success fw-bold bg-light">
-                            <i class="bi bi-arrow-left"></i> Back
-                        </a>
-                    </div>
-            </div>
+    <div>
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+
+    <form method="post" action="{{ route('products.update', $product) }}">
+        @csrf
+        @method('put')
+
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" value="{{ old('name', $product->name) }}">
+        </div>
+        <div>
+            <label>Image</label>
+            <input type="text" name="image" placeholder="https://example.com/image.jpg" value="{{ old('image', $product->image) }}">
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea name="description">{{ old('description', $product->description) }}</textarea>
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="number" name="price" step="0.01" min="0" value="{{ old('price', $product->price) }}">
+        </div>
+        <div>
+            <label>Stock Quantity</label>
+            <input type="number" name="stock_quantity" min="0" value="{{ old('stock_quantity', $product->stock_quantity) }}">
         </div>
     </div>
     </div>

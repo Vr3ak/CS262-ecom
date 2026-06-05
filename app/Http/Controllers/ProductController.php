@@ -24,6 +24,7 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name'           => 'required|min:2|max:255',
+            'image'          => 'nullable|url|max:2048',
             'description'    => 'nullable|string',
             'price'          => 'required|numeric|min:0',
             'stock_quantity' => 'required|integer|min:0',
@@ -45,6 +46,7 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name'           => 'required|min:2|max:255',
+            'image'          => 'nullable|url|max:2048',
             'description'    => 'nullable|string',
             'price'          => 'required|numeric|min:0',
             'stock_quantity' => 'required|integer|min:0',
