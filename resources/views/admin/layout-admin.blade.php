@@ -39,7 +39,6 @@
                             <button class="btn border-success border-2 rounded text-success p-1 fw-bold" style="width:130px; font-size:12px">Logout</button>
                         </form>
                     </div>
-                    
                 </div>
             </div>
         </nav>
