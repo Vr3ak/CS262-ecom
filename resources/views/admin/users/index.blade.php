@@ -1,18 +1,18 @@
 @extends('admin.layout-admin')
 @section('content')
     <div class="row justify-content-start">
-        <div>
-            @if(session()->has('success'))
-                <div>
-                    {{session('success')}}
-                </div>
-            @endif
-        </div>
         <div class="col-12 mt-5">
             <div class="card shadow-sm border-2">
                 <div class="card-header text-center py-3 text-success border border-light">
                     <i class="bi bi-person-square fs-3 d-block mb-2"></i>
                     <h4 class="mb-2">Admin Users</h4>
+                    <div>
+                        @if(session()->has('success'))
+                            <div>
+                                {{session('success')}}
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-body p-4 text-center">
                     <div class="text-success fw-bold border border-2 rounded overflow-hidden">

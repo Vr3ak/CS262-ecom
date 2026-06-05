@@ -6,15 +6,13 @@
                 <div class="card-header text-center py-3 text-success border border-light">
                     <i class="bi bi-person-square fs-3 d-block mb-2"></i>
                     <h4 class="mb-2">Edit User</h4>
-                </div>
-                <div>
-                    @if($errors->any())
-                    <ul>
-                        @foreach($errors->all() as $errors)
-                            <li>{{$errors}}</li>
-                        @endforeach
-                    </ul>
-                    @endif
+                    <div class="text-danger">
+                        @if($errors->any())
+                            @foreach($errors->all() as $errors)
+                                <p>{{$errors}}</p>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
                 <div class="card-body p-4 text-center">
                     <div class="text-success fw-bold border border-2 rounded overflow-hidden p-2">
