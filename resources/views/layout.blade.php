@@ -125,6 +125,11 @@
             <div class="navbar-nav">
 
                 <a class="nav-link px-4 text-white"
+                    href="/">
+                    Home
+                </a>
+
+                <a class="nav-link px-4 text-white"
                    href="{{ route('categories.electronics') }}">
                     Electronics
                 </a>
