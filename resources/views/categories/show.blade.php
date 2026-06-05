@@ -20,6 +20,7 @@
             @foreach($products as $product)
                 <div class="col">
                     <div class="card h-100 shadow-sm border-0">
+                        
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title fw-semibold">{{ $product->name }}</h6>
                             <p class="card-text text-muted small flex-grow-1">
@@ -32,6 +33,7 @@
                                 </span>
                             </div>
                         </div>
+
                         <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
                             <button class="btn btn-success btn-sm w-100" {{ $product->stock_quantity < 1 ? 'disabled' : '' }}>
                                 <i class="bi bi-cart-plus"></i> Add to Cart

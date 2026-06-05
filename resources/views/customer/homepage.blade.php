@@ -1,7 +1,6 @@
 @extends('layout')
-
 @section('content')
-<div class="container py-5">
+<div class="container py-5 overflow-y min-vh-100">
 
     @forelse($categories as $category)
         @if($category->products->isNotEmpty())
