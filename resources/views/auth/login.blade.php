@@ -23,14 +23,15 @@
 
                     <form action="{{ route('auth.login.store') }}" method="post">
                         @csrf
-                        <div class="mb-3">
+                        <div class="mb-3 mt-4">
                             <label class="form-label">Email Address</label>
                             <input type="text" name="email" class="form-control" value="{{ old('email') }}"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input type="password" name="password" class="form-control"/>
-                        </div>
+
+                        </div class="mb-3">
                         <button type="submit" class="btn btn-success w-100">Login</button>
                     </form>
 
