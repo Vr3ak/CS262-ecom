@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'role'     => 'admin'
         ]);
 
-        $categories = ['Electronics', 'Agricultural', 'Drinks', 'Accessories', 'Clothing'];
+        $categories = ['Agricultural', 'Drinks', 'Accessories', 'Clothing'];
 
         foreach ($categories as $category) {
             Category::create([
